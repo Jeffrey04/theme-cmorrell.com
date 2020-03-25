@@ -5,13 +5,9 @@ function get_git_status -d "Gets the current git status"
     set -l ref (command git describe --tags --exact-match 2> /dev/null ; or command git symbolic-ref --short HEAD 2> /dev/null ; or command git rev-parse --short HEAD 2> /dev/null)
 
     if [ "$dirty" != "0" ]
-      set_color -b normal
-      set_color red
-      echo "$dirty changed file"
-      if [ "$dirty" != "1" ]
-        echo "s"
-      end
-      echo " "
+      set_color -b yellow
+      set_color black
+      echo " Δ$dirty "
       set_color -b red
       set_color white
     else
